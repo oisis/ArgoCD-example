@@ -1,0 +1,7 @@
+appconfig:
+  - name: "nginx"
+    namespace: "nginx"
+    project: "default"
+    repoUrl: "https://charts.bitnami.com/bitnami"
+    chart: nginx
+    targetRevision: "18.2.5"

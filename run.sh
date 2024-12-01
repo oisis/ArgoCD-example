@@ -5,12 +5,12 @@ helm repo add argocd https://argoproj.github.io/argo-helm
 
 echo "Installing ArgoCD with Helm"
 helm install argocd argocd/argo-cd --version 7.7.6 \
-  -f ./bootstrap/helm/argocd-values.yaml \
+  -f ./argocd-bootstrap/helm/argocd-values.yaml \
   --create-namespace \
   -n argocd
 
 echo "Applying K8s manifests to finish ArgoCD bootstrap"
-kubectl apply -f ./bootstrap/manifests/
+kubectl apply -f ./argocd-bootstrap/manifests/
 
 echo "Getting ArgoCD admin password"
 argocd admin initial-password -n argocd

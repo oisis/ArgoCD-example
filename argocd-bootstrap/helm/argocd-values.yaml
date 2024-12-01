@@ -1,0 +1,26 @@
+crds:
+  install: true
+  keep: true
+global:
+  domain: localhost:8080
+  logging:
+    format: text
+    level: info
+configs:
+  cm:
+    create: true
+    exec.enabled: true
+    server.insecure: true
+    admin.enabled: true
+    statusbadge.enabled: true
+redis-ha:
+  enabled: false
+controller:
+  replicas: 1
+applicationSet:
+  replicas: 1
+certificate:
+  enabled: true
+server:
+  service:
+    type: LoadBalancer

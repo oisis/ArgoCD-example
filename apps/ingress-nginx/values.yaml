@@ -1,0 +1,25 @@
+controller:
+  name: controller
+  enableAnnotationValidations: true
+  containerName: controller
+  containerPort:
+    http: 80
+    https: 443
+  hostNetwork: true
+  hostPort:
+    enabled: true
+    ports:
+      http: 80
+      https: 443
+  ingressClassResource:
+    name: nginx
+    enabled: true
+    default: true
+  kind: DaemonSet
+  resources:
+    requests:
+      cpu: 10m
+      memory: 64Mi
+    limits:
+      cpu: 100m
+      memory: 64Mi

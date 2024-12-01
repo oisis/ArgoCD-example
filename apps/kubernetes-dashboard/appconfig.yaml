@@ -1,0 +1,7 @@
+appconfig:
+  - name: "kubernetes-dashboard"
+    namespace: "kubernetes-dashboard"
+    project: "default"
+    repoUrl: "https://kubernetes.github.io/dashboard"
+    chart: kubernetes-dashboard
+    targetRevision: "7.10.0"

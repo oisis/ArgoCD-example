@@ -1,0 +1,48 @@
+
+global:
+  logLevel: 2
+  leaderElection:
+    namespace: "cert-manager"
+crds:
+  enabled: true
+  keep: false
+replicaCount: 1
+resources:
+ requests:
+   cpu: 1m
+   memory: 32Mi
+ limits:
+   cpu: 1
+   memory: 64Mi
+prometheus:
+  enabled: false
+webhook:
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 1
+      memory: 64Mi
+cainjector:
+  enabled: true
+  replicaCount: 1
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 1
+      memory: 64Mi
+startupapicheck:
+  enabled: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 32Mi
+    limits:
+      cpu: 1
+      memory: 64Mi
+creator: "helm"
+enabled: true

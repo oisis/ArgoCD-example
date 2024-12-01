@@ -1,0 +1,7 @@
+appconfig:
+  - name: "cert-manager"
+    namespace: "cert-manager"
+    project: "default"
+    repoUrl: "https://charts.jetstack.io"
+    chart: cert-manager
+    targetRevision: "1.16.2"

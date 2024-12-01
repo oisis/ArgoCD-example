@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: repo-gitlab-oisis-argocd
+  name: repo-github-oisis
   namespace: argocd
   labels:
     argocd.argoproj.io/secret-type: repository

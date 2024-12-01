@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: repo-gitlab-oisis-argocd
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  url: https://github.com/oisis/ArgoCD-example.git
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: repo-gitlab-oisis
+  namespace: argocd
+  labels:
+    argocd.argoproj.io/secret-type: repo-creds
+stringData:
+  type: git
+  # Wszystkie repa ponizej podanego urla beda korzystaly z tych credentiali
+  url: https://github.com/oisis/ArgoCD-example.git
+  username: oisis
+  # TODO: Update token here
+  password: ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

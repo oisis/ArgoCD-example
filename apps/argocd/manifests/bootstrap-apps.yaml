@@ -1,0 +1,51 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: app-of-apps
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - matrix:
+      generators:
+      - git:
+          repoURL: 'https://github.com/oisis/ArgoCD-example.git'
+          revision: HEAD
+          files:
+            - path: apps/*/appconfig.yaml
+      - list:
+          elementsYaml: "{{ .appconfig | toJson }}"
+  template:
+    metadata:
+      name: '{{.name}}'
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: '{{.project}}'
+      sources:
+        - repoURL: 'https://github.com/oisis/ArgoCD-example.git'
+          targetRevision: HEAD
+          ref: values
+        - chart: '{{.chart}}'
+          repoURL: '{{.repoUrl}}'
+          targetRevision: '{{.targetRevision}}'
+          helm:
+            valueFiles:
+              - $values/apps/{{.name}}/values.yaml
+        - repoURL: 'https://github.com/oisis/ArgoCD-example.git'
+          targetRevision: HEAD
+          path: apps/{{.name}}/manifests
+          directory:
+            recurse: true
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{.namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+          allowEmpty: true
+        syncOptions:
+          - CreateNamespace=true

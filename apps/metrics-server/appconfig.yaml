@@ -1,0 +1,7 @@
+appconfig:
+  - name: "metrics-server"
+    namespace: "metrics-server"
+    project: "default"
+    repoUrl: "https://kubernetes-sigs.github.io/metrics-server/"
+    chart: metrics-server
+    targetRevision: "3.12.2"

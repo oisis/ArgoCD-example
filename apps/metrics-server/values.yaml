@@ -1,0 +1,27 @@
+serviceAccount:
+  create: true
+rbac:
+  create: true
+apiService:
+  create: true
+  insecureSkipTLSVerify: true
+containerPort: 10250
+hostNetwork:
+  enabled: false
+replicas: 1
+defaultArgs:
+  - --cert-dir=/tmp
+  - --kubelet-preferred-address-types=InternalIP,ExternalIP,Hostname
+  - --kubelet-use-node-status-port
+  - --metric-resolution=15s
+  - --kubelet-insecure-tls
+service:
+  type: ClusterIP
+  port: 443
+resources:
+  requests:
+    cpu: 10m
+    memory: 24Mi
+  limits:
+    cpu: 1
+    memory: 24Mi

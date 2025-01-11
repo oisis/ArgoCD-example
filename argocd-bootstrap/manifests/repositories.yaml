@@ -9,17 +9,3 @@ metadata:
 stringData:
   type: git
   url: https://github.com/oisis/ArgoCD-example.git
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: repo-gitub-oisis-credentials
-  namespace: argocd
-  labels:
-    argocd.argoproj.io/secret-type: repo-creds
-stringData:
-  type: git
-  url: https://github.com/oisis/ArgoCD-example.git
-  username: oisis
-  # TODO: Update token here
-  password: ghp_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

@@ -24,3 +24,7 @@ certificate:
 server:
   service:
     type: LoadBalancer
+repoServer:
+  envFrom:
+    - configMapRef:
+        name: bootstrap-conf

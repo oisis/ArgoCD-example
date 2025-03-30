@@ -11,6 +11,4 @@ containerPorts:
 resourcesPreset: "nano"
 service:
   type: ClusterIP
-extraEnvVars:
-  - name: HELM_VERSION
-    value: {{ requiredENV "HELM_VERSION" }}
+

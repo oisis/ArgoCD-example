@@ -1,3 +1,3 @@
 extraEnvVars:
   - name: HELM_VERSION
-    value: "{{ .Values.HELM_VERSION }}"
+    value: {{ env "HELM_VERSION"  | default "1.0.0" }}

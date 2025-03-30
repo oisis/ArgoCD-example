@@ -54,9 +54,9 @@ server:
     tls: false
 repoServer:
   env:
-    - name: TEST_VARIABLE_1
+    - name: ARGOCD_ENV_TEST_VARIABLE_1
       value: "value_1"
-    - name: TEST_VARIABLE_2
+    - name: ARGOCD_ENV_TEST_VARIABLE_2
       value: "value_2"
   extraContainers:
     - name: helmfile

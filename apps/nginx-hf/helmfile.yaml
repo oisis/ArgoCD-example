@@ -14,4 +14,4 @@ releases:
 environments:
   default:
     env:
-      VAR_1: "{{ .Environment.Values.VAR_1 | default \"default_value_1\" }}"
+      VAR_1: "{{ .Environment.Values.VAR_1 | default 'default_value_1' }}"

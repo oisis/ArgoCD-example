@@ -5,7 +5,7 @@ repositories:
 environments:
   default:
     env:
-      VAR_1: "{{ .Environment.Values.VAR_1 }}"
+      TEST_VARIABLE_1: "{{ .Environment.Values.TEST_VARIABLE_1 }}"
 
 releases:
   - name: nginx-hf

@@ -3,3 +3,5 @@ extraEnvVars:
     value: {{ requiredEnv "HELM_VERSION" }}
   - name: TEST_VAL
     value: {{ env "ARGOCD_ENV_TEST_VARIABLE_1" }}
+  - name: BOOTSTRAP_CONF_VAR_1
+    value: {{ env "ARGOCD_ENV_VAR_1" }}

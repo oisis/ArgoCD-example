@@ -6,7 +6,7 @@ metadata:
   namespace: argocd
 spec:
   goTemplate: true
-  goTemplateOptions: ["missingkey=error"]
+  goTemplateOptions: ['missingkey=error']
   generators:
   - matrix:
       generators:
@@ -16,7 +16,7 @@ spec:
           files:
             - path: apps/*/appconfig.yaml
       - list:
-          elementsYaml: "{{ .appconfig | toJson }}"
+          elementsYaml: '{{ .appconfig | toJson }}'
   template:
     metadata:
       name: '{{.name}}'
@@ -44,7 +44,7 @@ spec:
             recurse: true
       destination:
         server: https://kubernetes.default.svc
-        namespace: "{{.namespace}}"
+        namespace: '{{.namespace}}'
       syncPolicy:
         automated:
           prune: true
@@ -67,4 +67,4 @@ spec:
     spec:
       syncPolicy:
         syncOptions:
-          - Validate={{ .syncPolicy_validate }}
+          - Validate='{{ .syncPolicy_validate }}'

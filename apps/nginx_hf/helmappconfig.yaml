@@ -1,0 +1,4 @@
+appconfig:
+  - name: nginx_hf
+    namespace: "nginx_hf"
+    project: "default"

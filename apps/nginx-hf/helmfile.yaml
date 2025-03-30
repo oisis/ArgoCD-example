@@ -6,11 +6,7 @@ releases:
   - name: nginx-hf
     namespace: nginx-hf
     chart: bitnami/nginx
+    version: '19.0.3'
     values:
-      - image:
-          debug: false
-      - service:
-          type: ClusterIP
-      - extraEnvVars:
-          - name: TEST_VARIABLE_1
-            value: {{ .Environment.Values.TEST_VARIABLE_1 }}
+      - values/nginx.yaml
+      - values/nginx.yaml.gotmpl

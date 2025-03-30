@@ -1,0 +1,13 @@
+image:
+  debug: false
+replicaCount: 1
+updateStrategy:
+  type: RollingUpdate
+tls:
+  enabled: false
+containerPorts:
+  http: 1080
+  https: 1443
+resourcesPreset: "nano"
+service:
+  type: ClusterIP

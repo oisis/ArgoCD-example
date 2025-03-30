@@ -69,4 +69,6 @@ spec:
         syncOptions:
         {{- if .syncPolicyValidate }}
           - Validate='{{.syncPolicyValidate}}'
+        {{- else }}
+          - Validate=true
         {{- end }}

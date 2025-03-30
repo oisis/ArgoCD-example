@@ -11,3 +11,6 @@ releases:
           debug: false
       - service:
           type: ClusterIP
+      - extraEnvVars:
+          - name: TEST_VARIABLE_1
+            value: {{ .Environment.TEST_VARIABLE_1 }}

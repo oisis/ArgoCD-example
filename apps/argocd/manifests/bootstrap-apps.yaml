@@ -22,6 +22,9 @@ spec:
       name: '{{.name}}'
       finalizers:
         - resources-finalizer.argocd.argoproj.io
+      labels:
+        chartVersion: '{{.targetRevision}}'
+        chartName: '{{.chart}}'
     spec:
       project: '{{.project}}'
       sources:

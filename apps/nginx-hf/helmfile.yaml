@@ -3,8 +3,8 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 
 releases:
-  - name: nginx_hf
-    namespace: nginx_hf
+  - name: nginx-hf
+    namespace: nginx-hf
     chart: bitnami/nginx
     values:
       - image:

@@ -56,13 +56,13 @@ spec:
             duration: 5s
             factor: 2
             maxDuration: 3m
-        syncOptions:
-          - Validate=false
-          - CreateNamespace=true
-          - PrunePropagationPolicy=foreground
-          - PruneLast=true
-          - RespectIgnoreDifferences=true
-          - ApplyOutOfSyncOnly=true
+        # syncOptions:
+        #   - Validate=false
+        #   - CreateNamespace=true
+        #   - PrunePropagationPolicy=foreground
+        #   - PruneLast=true
+        #   - RespectIgnoreDifferences=true
+        #   - ApplyOutOfSyncOnly=true
   templatePatch: |
     spec:
       syncPolicy:

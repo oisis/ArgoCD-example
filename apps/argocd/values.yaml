@@ -77,8 +77,8 @@ repoServer:
         - mountPath: /home/argocd/cmp-server/config/plugin.yaml
           subPath: helmfile.yaml
           name: argocd-cmp-cm
-        - mountPath: /tmp
-          name: cmp-tmp
+        # - mountPath: /tmp
+        #   name: cmp-tmp
   volumes:
     - name: argocd-cmp-cm
       configMap:

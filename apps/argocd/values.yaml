@@ -60,6 +60,9 @@ repoServer:
     - name: helmfile
       image: ghcr.io/helmfile/helmfile:v0.171.0
       command: ["/var/run/argocd/argocd-cmp-server"]
+      envFrom:
+        - configMapRef:
+          name: bootstrap-conf
       env:
         - name: HELM_CACHE_HOME
           value: /tmp/helm/cache

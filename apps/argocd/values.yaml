@@ -53,6 +53,9 @@ server:
     pathType: ImplementationSpecific
     tls: false
 repoServer:
+  envFrom:
+    - configMapRef:
+        name: bootstrap-conf
   extraContainers:
     - name: helmfile
       image: ghcr.io/helmfile/helmfile:v0.171.0

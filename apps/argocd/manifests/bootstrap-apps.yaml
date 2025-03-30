@@ -70,7 +70,7 @@ spec:
       {{- if hasKey . "syncPolicyValidate" }}
           - Validate={{.syncPolicyValidate}}
       {{- else }}
-          - Validate=false
+          - Validate=true
       {{- end }}
           - CreateNamespace=true
           - PrunePropagationPolicy=foreground

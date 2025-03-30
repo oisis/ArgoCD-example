@@ -1,7 +1,7 @@
 environments:
   default:
     env:
-      HELM_VERSION: "{{ .Environment.Values.HELM_VERSION }}"
+      HELM_VERSION: "{{ env HELM_VERSION }}"
 ---
 repositories:
   - name: bitnami

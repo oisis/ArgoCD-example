@@ -57,4 +57,9 @@ spec:
             factor: 2
             maxDuration: 3m
         syncOptions:
+          - Validate=true
           - CreateNamespace=true
+          - PrunePropagationPolicy=foreground
+          - PruneLast=true
+          - RespectIgnoreDifferences=true
+          - ApplyOutOfSyncOnly=true

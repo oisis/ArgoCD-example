@@ -11,4 +11,3 @@ containerPorts:
 resourcesPreset: "nano"
 service:
   type: ClusterIP
-

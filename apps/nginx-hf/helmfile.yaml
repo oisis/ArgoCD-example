@@ -9,3 +9,5 @@ releases:
     values:
       - image:
           debug: false
+      - service:
+          type: ClusterIP

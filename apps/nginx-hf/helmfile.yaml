@@ -9,4 +9,4 @@ releases:
     version: '19.0.3'
     values:
       - values/nginx.yaml
-      - values/nginx.yaml.gotmpl
+      # - values/nginx.yaml.gotmpl

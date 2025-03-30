@@ -23,3 +23,5 @@ controller:
     limits:
       cpu: 100m
       memory: 64Mi
+  service:
+    type: NodePort

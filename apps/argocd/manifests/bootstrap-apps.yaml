@@ -67,8 +67,8 @@ spec:
     spec:
       syncPolicy:
         syncOptions:
-        {{- if .syncPolicyValidate }}
-          - Validate='{{.syncPolicyValidate}}'
-        {{- else }}
+      {{- if hasKey . "syncPolicyValidate" }}
+          - Validate={{.syncPolicyValidate}}
+      {{- else }}
           - Validate=true
-        {{- end }}
+      {{- end }}

@@ -26,10 +26,15 @@ spec:
         app_name: '{{.name}}'
     spec:
       project: '{{.project}}'
-      sources:
-        - repoURL: https://github.com/oisis/ArgoCD-example.git
-          targetRevision: HEAD
-          path: apps/{{.name}}
+      source:
+        repoURL: https://github.com/oisis/ArgoCD-example.git
+        targetRevision: HEAD
+        path: apps/{{.name}}
+        plugin:
+          name: helmfile
+          env:
+            - name: TEST_VARIABLE_1
+              value: 'value_1'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.namespace}}'

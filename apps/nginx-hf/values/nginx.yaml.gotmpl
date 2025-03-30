@@ -1,3 +1,5 @@
 extraEnvVars:
   - name: HELM_VERSION
     value: {{ requiredEnv "HELM_VERSION" }}
+  - name: TEST_VAL
+    value: {{ env "ARGOCD_ENV_TEST_VARIABLE_1" }}

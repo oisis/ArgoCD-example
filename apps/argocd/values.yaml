@@ -53,6 +53,11 @@ server:
     pathType: ImplementationSpecific
     tls: false
 repoServer:
+  env:
+    - name: TEST_VARIABLE_1
+      value: "value_1"
+    - name: TEST_VARIABLE_2
+      value: "value_2"
   extraContainers:
     - name: helmfile
       image: ghcr.io/helmfile/helmfile:v0.171.0

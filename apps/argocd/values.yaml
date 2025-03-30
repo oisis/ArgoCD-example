@@ -62,7 +62,7 @@ repoServer:
       command: ["/var/run/argocd/argocd-cmp-server"]
       envFrom:
         - configMapRef:
-          name: bootstrap-conf
+            name: bootstrap-conf
       env:
         - name: HELM_CACHE_HOME
           value: /tmp/helm/cache

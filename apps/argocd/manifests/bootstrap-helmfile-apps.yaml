@@ -27,9 +27,9 @@ spec:
     spec:
       project: '{{.project}}'
       sources:
-        repoURL: https://github.com/oisis/ArgoCD-example.git
-        targetRevision: HEAD
-        path: apps/{{.name}}
+        - repoURL: https://github.com/oisis/ArgoCD-example.git
+          targetRevision: HEAD
+          path: apps/{{.name}}
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{.namespace}}'

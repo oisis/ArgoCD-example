@@ -4,4 +4,4 @@ appconfig:
     project: "default"
     repoUrl: "https://kubernetes.github.io/ingress-nginx"
     chart: ingress-nginx
-    targetRevision: "4.12.0-beta.0"
+    targetRevision: "4.12.1"

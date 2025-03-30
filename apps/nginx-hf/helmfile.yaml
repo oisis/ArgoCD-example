@@ -1,7 +1,7 @@
 environments:
   default:
     env:
-      TEST_VARIABLE_1: "{{ .Environment.Values.TEST_VARIABLE_1 }}"
+      HELM_VERSION: "{{ .Environment.Values.HELM_VERSION }}"
 ---
 repositories:
   - name: bitnami

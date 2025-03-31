@@ -102,3 +102,8 @@ spec:
       {{- else }}
           - ApplyOutOfSyncOnly=true
       {{- end }}
+      {{- if hasKey . "syncPolicyReplace" }}
+          - Replace={{.syncPolicyReplace}}
+      {{- else }}
+          - Replace=false
+      {{- end }}

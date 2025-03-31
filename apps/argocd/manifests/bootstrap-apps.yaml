@@ -98,7 +98,7 @@ spec:
           - RespectIgnoreDifferences=true
       {{- end }}      
       {{- if hasKey . "syncPolicyApplyOutOfSyncOnly" }}
-          - Validate={{.syncPolicyApplyOutOfSyncOnly}}
+          - ApplyOutOfSyncOnly={{.syncPolicyApplyOutOfSyncOnly}}
       {{- else }}
           - ApplyOutOfSyncOnly=true
       {{- end }}

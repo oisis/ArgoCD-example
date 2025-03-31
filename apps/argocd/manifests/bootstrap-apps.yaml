@@ -107,3 +107,8 @@ spec:
       {{- else }}
           - Replace=false
       {{- end }}
+      {{- if hasKey . "syncPolicyServerSideApply" }}
+          - ServerSideApply={{.syncPolicyServerSideApply}}
+      {{- else }}
+          - ServerSideApply=true
+      {{- end }}

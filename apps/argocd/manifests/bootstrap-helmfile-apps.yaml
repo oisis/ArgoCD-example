@@ -24,6 +24,7 @@ spec:
         - resources-finalizer.argocd.argoproj.io
       labels:
         app_name: '{{.name}}'
+        debug_label: $ARGOCD_USER_ID
     spec:
       project: '{{.project}}'
       source:

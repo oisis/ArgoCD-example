@@ -52,7 +52,6 @@ spec:
   templatePatch: |
     metadata:
       labels:
-        app_name: '{{.name}}'
         debug_label: {{ env "ARGOCD_USER_ID" }}
     spec:
       syncPolicy:

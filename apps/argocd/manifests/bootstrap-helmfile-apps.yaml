@@ -24,7 +24,6 @@ spec:
         - resources-finalizer.argocd.argoproj.io
       labels:
         app_name: '{{.name}}'
-        debug_label: $ARGOCD_USER_ID
     spec:
       project: '{{.project}}'
       source:
@@ -51,6 +50,10 @@ spec:
             factor: 2
             maxDuration: 3m
   templatePatch: |
+    metadata:
+      labels:
+        app_name: '{{.name}}'
+        debug_label: {{ env "ARGOCD_USER_ID" }}
     spec:
       syncPolicy:
         syncOptions:

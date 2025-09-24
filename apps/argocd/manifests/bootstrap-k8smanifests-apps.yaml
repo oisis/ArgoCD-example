@@ -35,7 +35,7 @@ spec:
             include: '*.yaml'
             exclude: '{k8s-manifest-apps.yaml}'
       destination:
-        name: "{{.environment}}"
+        server: https://kubernetes.default.svc
         namespace: "{{.namespace}}"
       syncPolicy:
         retry:

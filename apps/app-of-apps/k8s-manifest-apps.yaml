@@ -1,0 +1,4 @@
+k8s_manifest:
+  - name: "app-of-apps"
+    namespace: "argocd"
+    config_dir: "app-of-apps"

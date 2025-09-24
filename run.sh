@@ -8,7 +8,7 @@ printf "${GREEN}Adding ArgoCD Helm repo${NC}\n"
 helm repo add argocd https://argoproj.github.io/argo-helm
 
 printf "${GREEN}Installing ArgoCD with Helm${NC}\n"
-helm install argocd argocd/argo-cd --version 7.7.6 \
+helm install argocd argocd/argo-cd --version 8.5.6 \
   -f ./argocd-bootstrap/helm/argocd-values.yaml \
   --create-namespace \
   -n argocd

@@ -1,0 +1,106 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: k8s-manifest-aoa
+  namespace: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+    - matrix:
+        generators:
+          - git:
+              repoURL: 'https://github.com/oisis/ArgoCD-example.git'
+              revision: HEAD
+              files:
+                - path: apps/*/k8s-manifest-apps.yaml
+          - list:
+              elementsYaml: "{{ .k8s_manifest | toJson }}"
+  template:
+    metadata:
+      name: '{{.name}}'
+      labels:
+        custom.label/deployed-by: "k8s-manifests-aoa"
+      finalizers:
+        - resources-finalizer.argocd.argoproj.io
+    spec:
+      project: '{{.project}}'
+      sources:
+        - repoURL: 'https://github.com/oisis/ArgoCD-example.git'
+          targetRevision: HEAD
+          path: apps/{{.config_dir}}
+          directory:
+            recurse: true
+            include: '*.yaml'
+            exclude: '{k8s-manifest-apps.yaml}'
+      destination:
+        name: "{{.environment}}"
+        namespace: "{{.namespace}}"
+      syncPolicy:
+        retry:
+          limit: 5
+          backoff:
+            duration: 5s
+            factor: 2
+            maxDuration: 3m
+  templatePatch: |
+    spec:
+      syncPolicy:
+        automated:
+      {{- if hasKey . "automatedPrune" }}
+          prune: {{.automatedPrune}}
+      {{- else }}
+          prune: true
+      {{- end }}
+      {{- if hasKey . "automatedSelfHeal" }}
+          selfHeal: {{.automatedSelfHeal}}
+      {{- else }}
+          selfHeal: true
+      {{- end }}
+      {{- if hasKey . "automatedAllowEmpty" }}
+          allowEmpty: {{.automatedAllowEmpty}}
+      {{- else }}
+          allowEmpty: true
+      {{- end }}
+        syncOptions:
+      {{- if hasKey . "syncPolicyValidate" }}
+          - Validate={{.syncPolicyValidate}}
+      {{- else }}
+          - Validate=true
+      {{- end }}
+      {{- if hasKey . "syncPolicyCreateNamespace" }}
+          - CreateNamespace={{.syncPolicyCreateNamespace}}
+      {{- else }}
+          - CreateNamespace=true
+      {{- end }}
+      {{- if hasKey . "syncPolicyPrunePropagationPolicy" }}
+          - PrunePropagationPolicy={{.syncPolicyPrunePropagationPolicy}}
+      {{- else }}
+          - PrunePropagationPolicy=foreground
+      {{- end }}
+      {{- if hasKey . "syncPolicyPruneLast" }}
+          - PruneLast={{.syncPolicyPruneLast}}
+      {{- else }}
+          - PruneLast=true
+      {{- end }}
+      {{- if hasKey . "syncPolicyRespectIgnoreDifferences" }}
+          - RespectIgnoreDifferences={{.syncPolicyRespectIgnoreDifferences}}
+      {{- else }}
+          - RespectIgnoreDifferences=true
+      {{- end }}      
+      {{- if hasKey . "syncPolicyApplyOutOfSyncOnly" }}
+          - ApplyOutOfSyncOnly={{.syncPolicyApplyOutOfSyncOnly}}
+      {{- else }}
+          - ApplyOutOfSyncOnly=true
+      {{- end }}
+      {{- if hasKey . "syncPolicyReplace" }}
+          - Replace={{.syncPolicyReplace}}
+      {{- else }}
+          - Replace=false
+      {{- end }}
+      {{- if hasKey . "syncPolicyServerSideApply" }}
+          - ServerSideApply={{.syncPolicyServerSideApply}}
+      {{- else }}
+          - ServerSideApply=true
+      {{- end }}

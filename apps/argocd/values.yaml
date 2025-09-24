@@ -72,6 +72,16 @@ repoServer:
           value: /tmp/helmfile/cache
         - name: HELMFILE_TEMPDIR
           value: /tmp/helmfile/tmp
+        - name: ECR_OCI_PASSWD
+          valueFrom:
+            secretKeyRef:
+              name: testsec
+              key: password
+        - name: ECR_OCI_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: testsec
+              key: username
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
